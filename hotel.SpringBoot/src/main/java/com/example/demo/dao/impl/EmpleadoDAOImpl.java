@@ -11,28 +11,27 @@ import com.example.demo.repository.EmpleadoRepository;
 @Repository
 public class EmpleadoDAOImpl implements IEmpleadoDAO {
 
-    @Autowired
-    EmpleadoRepository empleadoRepository;
+	@Autowired
+	EmpleadoRepository empleadoRepository;
 
-    @Override
-    public ArrayList<EmpleadoDTO> obtenerEmpleados() {
-        return empleadoRepository.obtenerEmpleados();
-    }
+	@Override
+	public ArrayList<EmpleadoDTO> obtenerEmpleados() {
+		return empleadoRepository.obtenerEmpleados();
+	}
 
-    @Override
-    public ArrayList<EmpleadoDTO> filtrarPorCargo(String cargo) {
-        return empleadoRepository.filtrarPorCargo(cargo);
-    }
+	@Override
+	public ArrayList<EmpleadoDTO> filtrarPorCargo(String cargo) {
+		return empleadoRepository.filtrarPorCargo(cargo);
+	}
 
-    @Override
-    public void insertarEmpleado(String nombre, String apellido, String dni,
-                                  String cargo, Double salario) {
-        Empleado e = new Empleado();
-        e.setNombre(nombre);
-        e.setApellido(apellido);
-        e.setDni(dni);
-        e.setCargo(cargo);
-        e.setSalario(salario);
-        empleadoRepository.save(e);
-    }
+	@Override
+	public void insertarEmpleado(String nombre, String apellido, String dni, String cargo, Double salario) {
+		Empleado e = new Empleado();
+		e.setNombre(nombre);
+		e.setApellido(apellido);
+		e.setDni(dni);
+		e.setCargo(cargo);
+		e.setSalario(salario);
+		empleadoRepository.save(e);
+	}
 }
