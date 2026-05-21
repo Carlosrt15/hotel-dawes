@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Clientes</title></head>
+<body>
+
+  <h2>Listado de clientes</h2>
+
+  <!-- Filtro por habitación -->
+  <form method="get" action="/clientes">
+    <input type="text" name="habitacion"
+           th:value="${habitacionFiltro}"
+           placeholder="Filtrar por habitación..."/>
+    <button type="submit">Buscar</button>
+    <a th:href="@{/clientes}">Ver todos</a>
+  </form>
+
+  <a th:href="@{/clientes/nuevo}">Nuevo cliente</a>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th><th>Nombre</th><th>Apellido</th>
+        <th>DNI</th><th>Email</th><th>Habitación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="c : ${clientes}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.nombre}"></td>
+        <td th:text="${c.apellido}"></td>
+        <td th:text="${c.dni}"></td>
+        <td th:text="${c.email}"></td>
+        <td th:text="${c.habitacion}"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

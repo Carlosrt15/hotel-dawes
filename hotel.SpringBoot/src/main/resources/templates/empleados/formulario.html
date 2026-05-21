@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Empleado</title>
+</head>
+<body>
+
+  <h2>Crear Nuevo Empleado</h2>
+
+  <form th:action="@{/empleados/guardar}"
+        th:object="${empleado}"
+        method="post">
+
+    <input type="text"   th:field="*{nombre}"   placeholder="Nombre" required/>
+    <input type="text"   th:field="*{apellido}" placeholder="Apellido" required/>
+    <input type="text"   th:field="*{dni}"      placeholder="DNI" required/>
+    <input type="text"   th:field="*{cargo}"    placeholder="Cargo" required/>
+    <input type="number" th:field="*{salario}"  placeholder="Salario" required/>
+
+    <button type="submit">Guardar</button>
+    <a th:href="@{/empleados}">Cancelar</a>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Empleados</title>
+</head>
+<body>
+
+  <!-- Formulario de filtro -->
+  <form method="get" th:action="@{/empleados}">
+    <input type="text" name="cargo"
+           th:value="${cargoFiltro}"
+           placeholder="Filtrar por cargo..."/>
+    <button type="submit">Buscar</button>
+    <a th:href="@{/empleados}">Ver todos</a>
+  </form>
+
+  <br/>
+  <a th:href="@{/empleados/nuevo}">Nuevo empleado</a>
+  <br/><br/>
+
+  <table border="1">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>DNI</th>
+      <th>Cargo</th>
+      <th>Salario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="emp : ${empleados}">
+      <td th:text="${emp.nombre}"></td>
+      <td th:text="${emp.apellido}"></td>
+      <td th:text="${emp.dni}"></td>
+      <td th:text="${emp.cargo}"></td>
+      <td th:text="${emp.salario}"></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
