@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Empleados</title>
+  <title>Empleados</title>
 </head>
 <body>
 
-  <!-- Formulario de filtro -->
-  <form method="get" th:action="@{/empleados}">
-    <input type="text" name="cargo"
-           th:value="${cargoFiltro}"
+  <a th:href="@{/}">Inicio</a>
+
+  <!-- Filtro -->
+  <form method="get" action="/empleados">
+    <input type="text" name="cargo" th:value="${cargoFiltro}"
            placeholder="Filtrar por cargo..."/>
     <button type="submit">Buscar</button>
     <a th:href="@{/empleados}">Ver todos</a>
   </form>
 
-  <br/>
-  <a th:href="@{/empleados/nuevo}">Nuevo empleado</a>
-  <br/><br/>
+  <!-- Insertar -->
+  <form method="post" action="/empleados/insertar">
+    <input type="text"   name="nombre"   placeholder="Nombre"/>
+    <input type="text"   name="apellido" placeholder="Apellido"/>
+    <input type="text"   name="dni"      placeholder="DNI"/>
+    <input type="text"   name="cargo"    placeholder="Cargo"/>
+    <input type="number" name="salario"  placeholder="Salario" step="0.01"/>
+    <button type="submit">Guardar</button>
+  </form>
+  
+  <hr>
+  <br>
 
+  <!-- Tabla -->
   <table border="1">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>DNI</th>
-      <th>Cargo</th>
-      <th>Salario</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="emp : ${empleados}">
-      <td th:text="${emp.nombre}"></td>
-      <td th:text="${emp.apellido}"></td>
-      <td th:text="${emp.dni}"></td>
-      <td th:text="${emp.cargo}"></td>
-      <td th:text="${emp.salario}"></td>
-    </tr>
-  </tbody>
-</table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Nombre</th><th>Apellido</th>
+        <th>DNI</th><th>Cargo</th><th>Salario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="e : ${empleados}">
+        <td th:text="${e.id}"></td>
+        <td th:text="${e.nombre}"></td>
+        <td th:text="${e.apellido}"></td>
+        <td th:text="${e.dni}"></td>
+        <td th:text="${e.cargo}"></td>
+        <td th:text="${e.salario}"></td>
+      </tr>
+    </tbody>
+  </table>
 
 </body>
 </html>
